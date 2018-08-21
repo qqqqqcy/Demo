@@ -1,16 +1,6 @@
-# Vue-normal
+# Vue-cli-analyze
 
-## 配置过程
-
-1. 调整目录结构
-2. 安装 `less` 相关
-3. 安装 `axios`，设置为全局变量 `$_axios`
-4. 修改 `build/webpack.dev.conf.js` ，增加开发环境下，本地 mock 的功能
-5. 修改 `config/index.js` ，增加开发环境下，本地代理的功能
-6. 添加 `filter`
-7. 添加 `vuex`
-
-> A Vue.js project
+逐行注释 `vue-cli`
 
 ## Build Setup
 
@@ -26,7 +16,15 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
- 

@@ -14,6 +14,7 @@
 
 各种框架，项目的 demo
 
-- [vue-normal](Project/vue-normal) 普通的 vue 框架，满足小型项目。
-- [N-blog](Project/N-blog) 使用 Express + MongoDB 搭建多人博客
-- [VueSSR](Project/VueSSR) Vue 服务端渲染
+- [Vue-normal](Project/Vue-cli-analyze) 逐行注释 `Vue-cli`
+- [Vue-normal](Project/Vue-normal) 普通的 `Vue` 框架，满足小型项目
+- [N-blog](Project/N-blog) 使用 `Express` + `MongoDB` 搭建多人博客
+- [VueSSR](Project/VueSSR) `Vue` 服务端渲染
