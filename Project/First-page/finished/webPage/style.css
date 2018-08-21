@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css?family=Bad+Script|Droid+Serif|Satisfy');
+
+@font-face {
+  font-family: 'iconfont';  /* project id 324907 */
+  src: url('//at.alicdn.com/t/font_9p3uqkwzuobf0f6r.eot');
+  src: url('//at.alicdn.com/t/font_9p3uqkwzuobf0f6r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_9p3uqkwzuobf0f6r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_9p3uqkwzuobf0f6r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_9p3uqkwzuobf0f6r.svg#iconfont') format('svg');
+}
+
+a {  text-decoration: none;}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+ul,
+p{
+  margin: 0;
+  padding: 0;
+}
+.wrap {
+  font-family: "Microsoft YaHei";
+}
+.ct-mid,
+main,
+header,
+.header-title{
+  margin: 0 auto 0 auto;
+}
+
+li {list-style: none;}
+
+.ct-mid {
+  width: 1200px;  
+}
+
+.ct-gray {
+  background: rgb(247,247,247);
+}
+
+.ct-white {
+  background: white;
+}
+
+.ct-black {
+  background:#222 url("http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/map-image.png");
+  background-size: cover;
+  
+}
+
+.header-bg {
+  background: url(http://osafeurnt.bkt.clouddn.com/header-bg.jpg);
+  background-size: cover;
+  
+}
+header h3 {
+  text-transform: capitalize;
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+  font-weight: normal;
+}
+nav li{
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+nav {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+header a {
+  display: inline-block;
+  padding: 20px;
+  color: white;
+}
+nav a:hover {
+  color:rgb(254,209,54);
+}
+nav h3 {
+  color: rgb(254,209,54);
+  display: inline-block;
+}
+
+.header-title {
+  padding:150px 0;
+  text-align: center;
+  color: white;
+}
+
+.header-title h2 {
+  font-family: 'Bad Script', cursive;
+  font-size: 35px;
+}
+
+.header-title h1 {
+  text-transform: uppercase;
+  font-size: 70px;
+}
+
+.header-title a{
+  margin-top: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 20px;
+  background: rgb(254,209,54);
+  border-radius: 5px;
+}
+.header-title a:hover {
+  background: rgb(254,197,3);
+}
+
+main {  text-align: center;}
+main h3 {
+  padding-top: 150px;
+  text-transform: uppercase;
+  font-size: 34px;
+  color: #444;
+}
+
+main h4 {
+  margin-top: 15px;
+  font-family: 'Droid Serif', serif;
+  font-style: italic;
+  font-weight: normal;
+  color: #777;
+  margin-bottom: 80px;
+}
+
+main h5 {
+  font-size:25px;
+  line-height: 2;
+}
+.about-me {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  text-transform: capitalize;
+  padding-bottom: 150px;
+}
+
+
+.about-me .icon {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 100px;
+  background: rgb(254,209,54);
+  display: inline-block;
+  border-radius:999px;
+}
+
+.about-me .icon::before {
+  
+  font-family: iconfont;
+  color: white;
+  position: absolute;
+  margin-top: 15px;
+}
+
+.about-me li:nth-child(1) .icon::before {
+  content:"\e61c";
+  font-size: 60px;
+  margin-left: -30px;
+} 
+.about-me li:nth-child(2) .icon::before {
+  content:"\e604";
+  font-size: 50px;
+  margin-left: -35px;
+} 
+.about-me li:nth-child(3) .icon::before {
+  content:"\e61d";
+  font-size: 60px;
+  margin-left: -30px;
+} 
+
+
+.about-me li {
+  width: 350px;
+  height: 200px;
+}
+
+.about-me li p {
+  margin-top: 15px;
+  color: #777;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+
+.portfolio ul{
+  display: flex;
+  padding-bottom: 150px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.portfolio li{
+  margin-bottom: 50px;
+  width: 380px;
+  height: 350px;
+  background: white;
+}
+
+.portfolio .cover {
+  margin-bottom: 15px;
+  height: 250px;
+  background: #000;
+}
+
+
+.portfolio li:nth-child(1) .cover {
+  background: url(http://osafeurnt.bkt.clouddn.com/portfolio-1.jpg);
+  background-size: cover;
+}
+.portfolio li:nth-child(2) .cover {
+  background: url(http://osafeurnt.bkt.clouddn.com/portfolio-2.jpg);
+  background-size: cover;
+}
+.portfolio li:nth-child(3) .cover {
+  background: url(http://osafeurnt.bkt.clouddn.com/portfolio-3.jpg);
+  background-size: cover;
+}
+.portfolio li:nth-child(4) .cover {
+  background: url(http://osafeurnt.bkt.clouddn.com/portfolio-4.jpg);
+  background-size: cover;
+}
+.portfolio li:nth-child(5) .cover {
+  background: url(http://osafeurnt.bkt.clouddn.com/portfolio-5.jpg);
+  background-size: cover;
+}
+.portfolio li:nth-child(6) .cover {
+  background: url(http://osafeurnt.bkt.clouddn.com/portfolio-6.jpg);
+  background-size: cover;
+}
+
+.portfolio .cover a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: background .5s; 
+}
+
+.portfolio .cover a:before {
+  content:"+";
+  color: white;
+  font-size: 100px;
+  font-weight: bold;
+  padding: 50px;
+  display: none;
+  
+}
+
+.portfolio .cover a:hover {
+  background: rgba(254,209,54,0.8);
+  transition: background .5s;
+  
+}
+
+.portfolio .cover:hover a:before{
+  display: block;
+}
+
+.portfolio p {
+  font-size: 20px;
+  color: #777;
+  font-family: 'Droid Serif', serif;
+  font-style: italic;
+}
+
+.portfolio li:nth-child(3) h5 {
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+
+.experence .point {
+  z-index: 2;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: #000;
+  border-radius: 999px;
+  border: 10px solid #eee;
+}
+
+.experence li:nth-child(1) .point {
+  background: #000 url(http://osafeurnt.bkt.clouddn.com/experence.jpg)center 0;
+  background-size: cover;
+}
+.experence li:nth-child(2) .point {
+  background: #000 url(http://osafeurnt.bkt.clouddn.com/experence.jpg) center -100px;
+  background-size: cover;
+}
+.experence li:nth-child(3) .point {
+  background: #000 url(http://osafeurnt.bkt.clouddn.com/experence.jpg) center -200px;
+  background-size: cover;
+}
+.experence li:nth-child(4) .point {
+  background: #000 url(http://osafeurnt.bkt.clouddn.com/experence.jpg) center -300px;
+  background-size: cover;
+}
+
+.experence .section {
+  display: inline-block;
+  width: 400px;
+  text-align: left;
+}
+.experence p {
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #777;
+}
+
+.experence h5 {
+  line-height: 1.5;
+}
+.experence li::before {
+  content:" ";
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+}
+
+.experence li {
+  display: flex;
+  justify-content: space-around;
+}
+
+.experence li:nth-child(odd) .section {
+  order: -2;
+  text-align: right;
+}
+
+.experence li:nth-child(odd) .point {
+  order: -1;
+}
+
+.experence ul::before {
+  content:" ";
+  position: absolute;
+  height: 1600px;
+  width: 4px;
+  margin-left: -2px;
+  margin-top: 50px;
+  background: #eee;
+  z-index: 0;
+}
+
+.experence li:last-child .point {
+  background: rgb(254,209,54)
+}
+
+.experence li:last-child .point::before {
+  content: "BE PART OF OUR STORY!";
+  display: inline-block;
+  width: 80px;
+  font-weight: bold;
+  color: white;
+  margin-top: 15px;
+}
+ 
+.interests ul {
+  justify-content: space-around;
+  display: flex;
+  padding-bottom: 140px;
+}
+
+.interests li {
+  width: 400px;
+}
+
+.interests .avatar {
+  margin-right: auto;
+  margin-left: auto;
+  width: 180px;
+  height: 180px;
+  border-radius:999px;
+  border: 6px solid white;
+}
+
+.interests li:nth-child(1) .avatar {
+  background: rgb(254,209,54) url(http://osafeurnt.bkt.clouddn.com/interests-1.jpg) center;
+  background-size: cover;
+}
+.interests li:nth-child(2) .avatar {
+  background: rgb(254,209,54) url(http://osafeurnt.bkt.clouddn.com/interests-2.jpg) center;
+  background-size: cover;
+}
+.interests li:nth-child(3) .avatar {
+  background: rgb(254,209,54) url(http://osafeurnt.bkt.clouddn.com/interests-3.jpg) center;
+  background-size: cover;
+}
+
+.interests .icon,
+footer .icon{
+  display: inline-block;
+  margin:15px 5px 15px 5px;
+  width: 50px;
+  height: 50px;
+  border-radius:999px;
+  background: #222;
+  transition: background .3s;
+}
+
+.interests .icon:hover,
+footer .icon:hover {
+  background: rgb(254,209,54);
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.interests .icon:before,
+footer .icon:before{ 
+  font-family:iconfont;
+  color: white;
+  font-size:30px;
+  position: absolute;
+}
+
+.interests .icon:nth-last-child(3):before,
+footer .icon:nth-last-child(3):before {
+  content:'\e605';
+  margin-left: -16px;
+  margin-top: 3px;
+}
+.interests .icon:nth-last-child(2):before,
+footer .icon:nth-last-child(2):before {
+  content:'\e6f4';
+    font-size:40px;
+    margin-left: -19px;
+}
+.interests .icon:nth-last-child(1):before,
+footer .icon:nth-last-child(1):before {
+  content:'\e615';
+    font-size:35px;
+    margin-left: -17px;
+}
+
+
+.interests h5 {
+  text-transform: capitalize;
+}
+
+.gap ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gap li a{
+  display: inline-block;
+  margin:40px 0;
+  height: 50px;
+  width: 200px;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);	
+  filter: gray;
+}
+
+.gap li:nth-child(1) a{
+  background: url(http://www.gooood.hk/wp-content/themes/gooood-clean/assets/images/logo.jpg) no-repeat center;
+  background-size: contain;
+}
+.gap li:nth-child(2) a{
+  background: url(http://assets.adsttc.com/doodles/doodle-adglobal-LGBT.png) no-repeat center;
+  background-size: contain;
+}
+.gap li:nth-child(3) a{
+  background: url(http://www.90dg.cn/statics/css/90degree/logo.jpg) no-repeat center;
+  background-size: contain;
+}
+.gap li:nth-child(4) a{
+  background: url(https://www.mimoa.eu/img/mimoa_logo_1.gif) no-repeat center;
+  background-size: contain;
+}
+
+
+
+.contact h3 {
+  color: white;
+}
+
+.contact form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.contact form .lsection {
+  height: 230px;
+  display: flex;
+  flex-wrap:wrap;
+  flex-direction: column; 
+  justify-content: space-between;
+} 
+
+.contact .t1 {
+  width: 510px;
+  height: 15px;
+}
+
+.contact .t2 {
+  width: 510px;
+  height: 190px;
+}
+
+.contact .layout-f {
+  padding: 20px;
+  border:none;
+  border-radius: 5px;
+  box-shadow: 0 0 30 rgb(254,209,54);
+}
+
+.contact .layout-f:focus {
+  box-shadow: 0 0 0 1px rgb(254,209,54);
+  outline:none;
+}
+
+::-webkit-input-placeholder
+{
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  color: #aaa ;
+}
+
+.contact input[type="submit"]{
+  margin-top: 80px;
+  margin-bottom: 100px;
+  padding: 20px 30px;
+  border:none;
+  border-radius: 5px;
+  color: white;
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  font-size: 15px;
+  background: rgb(254,209,54);
+}
+
+.contact input[type="submit"]:hover {
+  background: rgb(254,197,3);
+  cursor: pointer;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+} 
+
+footer a {
+  color: rgb(254,209,54);
+}
+
+footer a:hover {
+  color: rgb(254,197,3);
+  text-decoration: underline;
+  
+  
+}
+
+footer>* {
+  display: inline-block;
+  width: 300px;
+}

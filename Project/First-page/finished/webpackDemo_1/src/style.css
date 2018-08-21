@@ -1,0 +1,270 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+main {
+	position: relative;
+}
+
+
+/*---回到顶部---*/
+.goTop {
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	border:0;
+	outline: none;
+	background: rgba(0,0,0,0.6);
+	position:fixed;
+	bottom: 50px;
+	right: 50px;
+	z-index: 10;
+	display: none;
+	cursor: pointer;
+}
+
+.goTop:hover {
+	background: rgba(0,0,0,0.4);
+}
+
+.goTop:active {
+	background: rgba(0,0,0,0.2);
+}
+/*---END---*/
+
+/*---瀑布流---*/
+.getWidth {
+	display: none;
+}
+
+.pinterest {
+	position: relative;
+	max-width: 1800px;
+	min-width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 50px;
+}
+.card {
+	position:absolute;
+	width: 240px;
+	/*border-radius: 5px;*/
+	padding: 10px;
+	border:1px solid rgba( 0, 0, 0, .1 );
+	cursor: pointer;
+}
+
+.card img {
+	width: 100%;
+	z-index: -1;
+	/*border-radius: 5px;*/
+}
+
+.card h3 {
+	padding: 10px;
+	margin:10px 0;
+}
+
+.card p {
+	padding: 10px;
+	color: #666;
+}
+
+.card .cover {
+	top:0;
+	left:0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	/*border-radius: 5px;*/
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.card:hover .cover {
+	display: block;
+	transition: all 1s;
+} 
+
+.getMore {
+	color: #999;
+	padding: 10px;
+	background: white;
+	border: 1px solid #999;
+	/*border-radius: 5px;*/
+	outline: none;
+	cursor: pointer;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+}
+
+.getMore:hover {
+	background: yellow;
+}
+
+.getMore:active {
+	background: #aaa;
+}
+/*---END---*/
+/*---轮播---*/
+* {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	list-style: none;
+}
+
+
+.carousel-info {
+	background: white;
+	width: 100vw;
+	height: 30vw; 
+	min-width: 600px;
+	min-height: 180px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 10vw;
+}
+
+.carousel-info .carouselCt {
+	box-sizing: border-box;
+	float: left;
+	height: 100%;
+	width: 60%;
+	overflow: hidden;
+	position: relative;
+}
+
+.carousel-info .carouselCt .carousel {
+	width:calc(100% * 7); 
+	position: absolute;
+}
+
+.carousel-info .carouselCt img {	
+	width: calc(100% / 7);
+	float: left;
+	cursor: pointer;
+}
+
+.carousel-info .carouselCt button{
+	position: absolute;
+	right: 5%;
+	top: 50%;
+	background: white;
+	width: 2vw;
+	height: 2vw;
+	min-width: 20px;
+	min-height: 20px;
+	border-radius: 9999px;
+	border:0;
+	font-size: 1.8vw;
+	font-weight: bold;
+	outline: none;
+	cursor: pointer;
+}
+
+.carousel-info .carouselCt .pre {
+	left: 5%;
+}
+
+.carousel-info .carouselCt button:hover {
+	background: yellow;
+}
+
+.carousel-info .carouselCt button:active {
+	color: #ccc;
+
+}
+
+.carousel-info .carouselCt .trig {
+	position: absolute;
+	display: block;	
+	bottom: 5%;
+ 	width: 100%;
+  	text-align: center;
+  	font-size: 0;
+}
+
+.carousel-info .carouselCt .trig li{
+	position: relative;
+	display: inline-block;
+	width: 4%;
+	height: .5vw;
+	min-height: 4px;
+	padding: .5% .4%;
+
+	cursor: pointer;
+}
+
+.carousel-info .carouselCt .trig li span {
+	display: inline-block;
+	background: white;
+	height: 100%;
+	width: 100%;
+	border-radius: 999px;
+}
+
+.carousel-info .carouselCt .trig li:hover span{
+	background: yellow;
+}
+
+.carousel-info .carouselCt .trig .active span{
+	background: yellow;
+}
+
+
+.carousel-info .infoCt {
+	float: left;
+	height: 100%;
+	width: 40%;
+	background: yellow;
+	position: relative;
+	overflow: hidden;
+}
+
+.carousel-info .info {
+	width: calc(100% * 7);
+	position: absolute;
+}
+
+.carousel-info .info li {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 2%;
+	float: left;
+	width: calc(100% / 7);
+}
+
+.carousel-info .info h2 {
+	font-size: 4vw;
+
+}
+
+@media screen and (max-width: 600px) {
+    .carousel-info .info h2 {
+        font-size:24px;
+    }
+
+    .carousel-info .info p {
+    	font-size:7.2px;
+    }
+
+    .carousel-info .carouselCt button {
+    	font-size:10.8px;
+    }
+}
+
+
+.carousel-info .info p {
+	color: #999;
+	text-align: left;
+	margin:20% 0;
+	font-size: 1.2vw;
+
+}
+
+/*---END---*/

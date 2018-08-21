@@ -1,0 +1,389 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 402411 */
+  src: url('//at.alicdn.com/t/font_402411_o3rvrll99c7919k9.eot');
+  src: url('//at.alicdn.com/t/font_402411_o3rvrll99c7919k9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_402411_o3rvrll99c7919k9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_402411_o3rvrll99c7919k9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_402411_o3rvrll99c7919k9.svg#iconfont') format('svg');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background:lightyellow;
+}
+
+body {
+  background: url(http://osafeurnt.bkt.clouddn.com/bodyBg.png);
+}
+
+header,
+.greet,
+.portfolio,
+.about,
+.contact {
+  margin-right: auto;
+  margin-left: auto;
+  width: 900px;
+  text-align: center;
+  position: relative;
+}
+
+header {
+  margin-top: 40px;;
+  margin-bottom: 200px;
+  /* background: yellow; */
+  font-size: 0;
+  
+}
+
+header ul {
+  padding-top: 4px;
+  list-style: none;
+  display: inline-block;
+  border-top:1px solid #ccc;
+}
+
+header li {
+  display: inline-block;
+  padding: 0 19px;
+  position: relative;
+}
+
+header li p {
+  display: inline-block;
+  font-size: 15px;
+  text-decoration: none;
+  color: rgb(115, 115, 115);
+  letter-spacing: 3px;
+  padding: 10px 20px; 
+  cursor: pointer;
+}
+
+header li p span {
+  font-weight:bold;
+  text-decoration: underline;
+}
+
+header li p:hover {
+  background: rgb(58, 58, 58);
+  color: white;
+}
+
+
+header .avatar {
+  display: inline-block;
+  height: 60px;
+  padding: 0 20px;
+  margin-bottom: 15px;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
+  vertical-align: bottom;
+}
+
+header .avatar img {
+  position: relative;
+  top: -20px;
+  width: 100px;
+  border-radius:999px;
+  border:2px solid #ccc;
+  transition:All 1s;
+}
+
+header .avatar img:hover {
+  transform:rotate(360deg);
+}
+
+/* ----------------------------------  header  ---------------------------------- */
+/* ----------------------------------  greet  ---------------------------------- */
+.greet {
+  margin-bottom: 300px;
+}
+.greet h2{
+  font-size:60px;
+  color: rgb(115, 115, 115);
+  margin-bottom: 20px;
+}
+
+.greet h3{
+  font-size:30px;
+  color: rgb(115, 115, 115);
+  font-weight: lighter;
+}
+
+.greet h4{
+  margin: 10px 0;
+  font-size:30px;
+  color: rgb(16, 159, 154);
+  font-weight: normal;
+}
+
+[data-top] {
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  border-top:1px solid #ccc;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+
+
+
+[data-top]:after {
+  content:attr(data-top);
+  position: absolute;
+  right: 20px;
+  top: -21px;
+  background: url(http://osafeurnt.bkt.clouddn.com/bodyBg.png);
+  padding: 10px;
+  color: rgb(115, 115, 115);
+  letter-spacing: 3px;
+}
+
+
+.portfolio-show {
+  display: none;
+  box-shadow:0 7px 10px black inset;
+  padding-top: 30px;
+  text-align: center;
+  position: relative;
+  height: 500px;
+  width: 100vw;
+  min-width: 900px;
+  background-image: url(http://www.tsimenis.com/img/showcase-bg.png);
+}
+
+.portfolio-show:before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-top:1px solid rgb(115, 115, 115);
+  top:-10px;
+  content:'';
+  
+}
+
+.portfolio-show .close-show {
+  font-family: 'iconfont'; 
+  cursor: pointer;
+  color:white;
+  text-align: center;
+  font-weight:lighter;
+  padding: 3px 5px;
+  font-size:40px;
+  position: absolute;
+  top: -9px;
+  right: 15%;
+  background: #000;
+  border:0;
+  outline:0;
+}
+
+.portfolio-show .close-show:hover {
+  background: rgba(0,0,0,.5);
+}
+
+
+.portfolio-show img {
+  width: 550px;
+}
+
+
+.portfolio-show .show-info {
+  display: inline-block;
+  width: 300px;
+  text-align: left;
+  vertical-align: top;
+  margin-left: 30px;
+}
+
+.portfolio-show .show-info h3 {
+  color: rgb(16, 159, 154);
+  margin: 20px 0;
+}
+
+.portfolio-show .show-info p {
+  color: white;
+  line-height: 1.6;
+}
+
+.portfolio-show .show-info a {
+  text-decoration: none;
+  color: rgb(16, 159, 154);
+}
+
+.portfolio-show .show-info a:hover {
+  text-decoration: underline;
+}
+
+.portfolio-show .show-info .visit {
+  margin-top: 50px;
+  height: 40px;
+  font-size: 0;
+}
+
+.portfolio-show .show-info .visit button {
+  padding-left: 15px;
+  padding-right: 60px;
+  height: 100%;
+  background: rgb(14, 127, 123);
+  border:none;
+  cursor: pointer;
+  color:white;
+  transition:background-color .5s;
+  outline: none;
+}
+
+.portfolio-show .show-info .visit button:hover {
+  background: rgb(16, 159, 154);
+  transition:background-color .5s;
+}
+
+.portfolio-show .show-info .visit:before {
+  font-size:30px;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 5px;
+  line-height: 100%;
+  display: inline-block;
+  height: 100%;
+  font-family:'iconfont';
+  background: rgb(16, 159, 154);
+  color: rgb(14, 127, 123);
+  content:"\e600";
+  position: relative;
+  box-shadow:5px 0 5px 0px rgba(0, 0, 0, .3);
+}
+
+.portfolio-show:after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-top:1px solid rgb(115, 115, 115);
+  bottom:-10px;
+  content:'';
+}
+
+.portfolio .portfolio-sec {
+  display: flex;
+  width: 100%;
+  flex-wrap:wrap;
+  margin-top: 100px;
+}
+
+.portfolio .portfolio-sec li {
+  margin-bottom: 30px;
+  border:1px solid #ccc;
+  padding: 15px;
+  display: inline-block;
+  margin-right: 40px;
+  transition: all .7s ease-in;
+  cursor: pointer;
+}
+
+.portfolio .portfolio-sec li:hover {
+  background: rgb(16,159,154);
+  transition: all .7s ease-in;
+}
+.portfolio .portfolio-sec li:nth-child(3n) {
+  margin-right: 0;
+}
+
+
+.portfolio .portfolio-sec li .thumb {
+  width: 240px;
+  height: 190px;
+  overflow: hidden;
+  text-align: center;
+  background-image: url(http://www.tsimenis.com/img/showcase-bg.png);
+}
+
+.portfolio .portfolio-sec li img {
+  transition: all 0.4s;
+}
+.portfolio .portfolio-sec li:hover img {
+  transform: scale(1.1);
+  transition: all 0.4s;
+}
+.portfolio {
+  margin-bottom: 200px;
+}
+
+.about li{
+  vertical-align: top;
+  text-align: left;
+  display: inline-block;
+  width: 400px;
+}
+
+.about li:first-child {
+  margin-right: 50px;
+}
+
+.about h4 {
+  font-size:30px;
+  color:rgb(16,159,154);
+  font-weight: lighter;
+  padding-bottom: 20px;
+}
+
+.about p {
+  color: rgb(115, 115, 115);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.about {
+  margin-bottom: 300px;
+}
+
+.contact a {
+  text-decoration: none;
+  padding: 20px;
+  background: rgb(16,159,154);
+  color: white;
+}
+
+.contact a:hover {
+  background:rgb(14, 127, 123);
+
+} 
+
+.contact {
+  margin-bottom: 100px;
+}
+footer {
+  font-size: 0;
+}
+footer img {
+  width: 100vw;
+}
+
+footer div {
+  height: 50px;
+  background: url('./img/showcase-bg.png');
+  text-align: center;
+}
+
+
+.goTop {
+  font-family: 'iconfont';
+  background:#aaa;
+  color: white;
+  border:0;
+  padding: 10px 12px;
+  position: fixed;
+  right: 40px;
+  top: 40px;
+  font-size: 30px;
+  cursor: pointer;
+  outline: none;
+}
+
+.goTop:hover {
+  background: rgb(16,159,154);
+}
