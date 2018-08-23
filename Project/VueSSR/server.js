@@ -1,4 +1,6 @@
-const createApp = require('./app')
+// const createApp = require('./app')
+const createApp = require('./entry-server.bounld')
+console.log(createApp.context)
 const server = require('express')()
 // const renderer = require('vue-server-renderer').createRenderer()
 const renderer = require('vue-server-renderer').createRenderer({
@@ -7,16 +9,13 @@ const renderer = require('vue-server-renderer').createRenderer({
 const header = {
     title: 'hello',
     meta: `
-      <meta ...>
-      <meta ...>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
     `
 }
 
 server.get('*', (req, res) => {
-    const context = {
-        url: decodeURI(req.url)
-    }
-    const app = createApp(context)
+    const app = createApp()
 
     renderer.renderToString(app, header, (err, html) => {
         if (err) {
