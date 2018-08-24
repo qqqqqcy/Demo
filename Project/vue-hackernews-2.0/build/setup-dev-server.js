@@ -16,6 +16,10 @@ const readFile = (fs, file) => {
   } catch (e) {}
 }
 
+/**
+ * app = express()
+ * templatePath = resolve('./src/index.template.html')
+ */
 module.exports = function setupDevServer (app, templatePath, cb) {
   let bundle
   let template
@@ -35,7 +39,6 @@ module.exports = function setupDevServer (app, templatePath, cb) {
 
   // read template from disk and watch
   // 监听模板 index 文件
-  // templatePath = resolve('./src/index.template.html')
   template = fs.readFileSync(templatePath, 'utf-8')
   chokidar.watch(templatePath).on('change', () => {
     template = fs.readFileSync(templatePath, 'utf-8')
@@ -43,21 +46,33 @@ module.exports = function setupDevServer (app, templatePath, cb) {
     update()
   })
 
+  // --------------------------- webpack 中间件 ---------------------------------------
+  // 文档：https://github.com/webpack-contrib/webpack-hot-middleware#installation--usage
   // modify client config to work with hot middleware
+
+  // 把 clientConfig.entry.app 打包到路径 webpack-hot-middleware/client.js
+  // 服务器可以在捆绑包重建时接收通知，然后相应地更新客户端 bunlde
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app]
   clientConfig.output.filename = '[name].js'
+  // webpack 热加载所需插件
   clientConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   )
 
   // dev middleware
+  // 中间件构建
   const clientCompiler = webpack(clientConfig)
   const devMiddleware = require('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
     noInfo: true
   })
+  
   app.use(devMiddleware)
+  // ---------------------------------------------------------------------------------
+
+  // 在client webpack结合vue-ssr-webpack-plugin完成编译后，获取devMiddleware的fileSystem
+  // 读取内存中的bundle 并通过传入的回调更新server.js中的bundle
   clientCompiler.plugin('done', stats => {
     stats = stats.toJson()
     stats.errors.forEach(err => console.error(err))
