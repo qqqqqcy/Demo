@@ -30,7 +30,7 @@ const webpackConfig = (process.env.NODE_ENV === 'testing' || process.env.NODE_EN
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
 
-// default port where dev server listens for incoming traffic
+// default port where dev server listens for idev-serverncoming traffic
 // 端口号，取进程端口号或者设置好的
 const port = process.env.PORT || config.dev.port
 
@@ -112,6 +112,9 @@ var portfinder = require('portfinder')
 portfinder.basePort = port
 
 console.log('> Starting dev server...')
+
+// waitUntilValid(callback)
+// 当编译器包有效时，通常在编译之后执行回调函数。
 devMiddleware.waitUntilValid(() => {
   portfinder.getPort((err, port) => {
     if (err) {
@@ -129,6 +132,7 @@ devMiddleware.waitUntilValid(() => {
   })
 })
 
+// 此处导出是作为测试时用的
 module.exports = {
   ready: readyPromise,
   close: () => {
