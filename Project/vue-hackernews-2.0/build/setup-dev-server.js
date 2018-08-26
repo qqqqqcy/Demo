@@ -60,9 +60,14 @@ module.exports = function setupDevServer (app, templatePath, cb) {
     new webpack.NoEmitOnErrorsPlugin()
   )
 
+// Compiler 实例
+// 如果你不向 webpack 执行函数传入回调函数，就会得到一个 webpack Compiler 实例
+// 你可以通过它手动触发 webpack 执行器，或者是让它执行构建并监听变更
+// https://webpack.docschina.org/api/node/#compiler-%E5%AE%9E%E4%BE%8B-compiler-instance-
+  const clientCompiler = webpack(clientConfig)
+
   // dev middleware
   // 中间件构建
-  const clientCompiler = webpack(clientConfig)
   const devMiddleware = require('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
     noInfo: true
