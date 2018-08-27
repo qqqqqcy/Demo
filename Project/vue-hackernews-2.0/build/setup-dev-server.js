@@ -83,6 +83,10 @@ module.exports = function setupDevServer (app, templatePath, cb) {
     stats.errors.forEach(err => console.error(err))
     stats.warnings.forEach(err => console.warn(err))
     if (stats.errors.length) return
+    // todo 待验证
+    // 同步读取打包后的文件
+    // readFile 完整路径为
+    // path.resolve(__dirname, '../dist') + 'vue-ssr-client-manifest.json'
     clientManifest = JSON.parse(readFile(
       devMiddleware.fileSystem,
       'vue-ssr-client-manifest.json'
