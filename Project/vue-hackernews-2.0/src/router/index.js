@@ -4,7 +4,18 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 // route-level code splitting
-const createListView = id => () => import('../views/CreateListView').then(m => m.default(id))
+
+// const createListView = function(id) {
+//      return function () {
+//          import('../views/CreateListView')
+//              .then(function(m) {
+//                  m.default(id)
+//              });
+//      }
+// }
+
+const createListView = id => () => import('../views/CreateListView').then(m => {console.log(m);m.default(id)})
+
 const ItemView = () => import('../views/ItemView.vue')
 const UserView = () => import('../views/UserView.vue')
 
