@@ -1,7 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
+
+// 用来抽离css样式
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+// 能够更好在终端看到webapck运行的警告和错误
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+
 const { VueLoaderPlugin } = require('vue-loader')
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -62,10 +67,12 @@ module.exports = {
       },
     ]
   },
+  // 控制 webpack 如何通知「资源(asset)和入口起点超过指定文件限制」
   performance: {
     maxEntrypointSize: 300000,
     hints: isProd ? 'warning' : false
   },
+  
   plugins: isProd
     ? [
         new VueLoaderPlugin(),

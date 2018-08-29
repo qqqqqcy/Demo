@@ -1,4 +1,6 @@
-import { createApp } from './app'
+import {
+  createApp
+} from './app'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -8,32 +10,57 @@ const isDev = process.env.NODE_ENV !== 'production'
 // Since data fetching is async, this function is expected to
 // return a Promise that resolves to the app instance.
 export default context => {
+  // 因为有可能会是异步路由钩子函数或组件，所以我们将返回一个 Promise，
+  // 以便服务器能够等待所有的内容在渲染前，
+  // 就已经准备就绪。
   return new Promise((resolve, reject) => {
-    const s = isDev && Date.now()
-    const { app, router, store } = createApp()
 
-    const { url } = context
-    const { fullPath } = router.resolve(url).route
+    const s = isDev && Date.now()
+    const {
+      app,
+      router,
+      store
+    } = createApp()
+    
+    // const context = {
+    //   title: 'Vue HN 2.0', // default title
+    //   url: req.url 请求地址
+    // }req
+    const {
+      url
+    } = context
+    
+    const {
+      fullPath
+    } = router.resolve(url).route
 
     if (fullPath !== url) {
-      return reject({ url: fullPath })
+      return reject({
+        url: fullPath
+      })
     }
 
-    // set router's location
+    // 设置服务器端 router 的位置
     router.push(url)
 
-    // wait until router has resolved possible async hooks
+    // 等到 router 将可能的异步组件和钩子函数解析完
     router.onReady(() => {
+      // 返回目标位置或是当前路由匹配的组件数组（是数组的定义/构造类，不是实例）
+      // 通常在服务端渲染的数据预加载时时候。
       const matchedComponents = router.getMatchedComponents()
-      // no matched routes
+      // 匹配不到的路由，执行 reject 函数，并返回 404
       if (!matchedComponents.length) {
-        return reject({ code: 404 })
+        return reject({
+          code: 404
+        })
       }
       // Call fetchData hooks on components matched by the route.
       // A preFetch hook dispatches a store action and returns a Promise,
       // which is resolved when the action is complete and store state has been
       // updated.
-      Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
+      Promise.all(matchedComponents.map(({
+        asyncData
+      }) => asyncData && asyncData({
         store,
         route: router.currentRoute
       }))).then(() => {
@@ -45,6 +72,7 @@ export default context => {
         // store to pick-up the server-side state without having to duplicate
         // the initial data fetching on the client.
         context.state = store.state
+        // Promise 应该 resolve 应用程序实例，以便它可以渲染
         resolve(app)
       }).catch(reject)
     }, reject)
