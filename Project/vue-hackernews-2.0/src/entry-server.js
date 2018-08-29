@@ -21,7 +21,7 @@ export default context => {
       router,
       store
     } = createApp()
-    
+
     // const context = {
     //   title: 'Vue HN 2.0', // default title
     //   url: req.url 请求地址
@@ -29,7 +29,16 @@ export default context => {
     const {
       url
     } = context
-    
+
+    // const resolved: {
+    //   location: Location;
+    //   route: Route; 路由对象
+    //   href: string;
+    // } = router.resolve(location, current?, append?)
+
+    // 解析目标位置 (格式和 <router-link> 的 to prop 一样)。
+    // - current 是当前默认的路由 (通常你不需要改变它)
+    // - append 允许你在 current 路由上附加路径 (如同 router-link)
     const {
       fullPath
     } = router.resolve(url).route
