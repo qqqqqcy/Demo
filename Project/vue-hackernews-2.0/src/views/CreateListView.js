@@ -14,7 +14,7 @@ export default function createListView (type) {
   return {
     name: `${type}-stories-view`,
 
-    // asyncData 方法的具体定义在 ./entry-client 中
+    // asyncData 方法的具体定义在 ./ItemView 和 ./UserView 中
     asyncData ({ store }) {
       return store.dispatch('FETCH_LIST_DATA', { type })
     },

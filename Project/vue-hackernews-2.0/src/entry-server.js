@@ -29,7 +29,6 @@ export default context => {
     const {
       url
     } = context
-
     // const resolved: {
     //   location: Location;
     //   route: Route; 路由对象
@@ -61,10 +60,10 @@ export default context => {
           code: 404
         })
       }
-      // Call fetchData hooks on components matched by the route.
-      // A preFetch hook dispatches a store action and returns a Promise,
-      // which is resolved when the action is complete and store state has been
-      // updated.
+
+      // 当组件通过路由都匹配完成的时候，执行获取数据的钩子函数
+      // 一个预取钩子(preFetch hook) dispatches a store action 然后返回一个 Promise
+      // 当所有 action 完成，store state 被更新之后，Promise resolve
       Promise.all(matchedComponents.map(({
         asyncData
       }) => asyncData && asyncData({
@@ -72,12 +71,12 @@ export default context => {
         route: router.currentRoute
       }))).then(() => {
         isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
-        // After all preFetch hooks are resolved, our store is now
-        // filled with the state needed to render the app.
-        // Expose the state on the render context, and let the request handler
-        // inline the state in the HTML response. This allows the client-side
-        // store to pick-up the server-side state without having to duplicate
-        // the initial data fetching on the client.
+        
+        // 在所有预取钩子(preFetch hook) resolve 后，
+        // 我们的 store 现在已经填充入渲染应用程序所需的状态。
+        // 当我们将状态附加到上下文，
+        // 并且 `template` 选项用于 renderer 时，
+        // 状态将自动序列化为 `window.__INITIAL_STATE__`，并注入 HTML。
         context.state = store.state
         // Promise 应该 resolve 应用程序实例，以便它可以渲染
         resolve(app)
