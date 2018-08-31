@@ -31,7 +31,7 @@ export function createApp() {
   const store = createStore()
   const router = createRouter()
 
-  // 同步 store 和 router
+  // 同步路由状态 (route state) 到 store
   sync(store, router)
 
   // 创建 app 实例
@@ -43,9 +43,6 @@ export function createApp() {
     render: h => h(App)
   })
 
-  // expose the app, the router and the store.
-  // note we are not mounting the app here, since bootstrapping will be
-  // different depending on whether we are in a browser or on the server.
   // 暴露 app, router 和 store
   // 注意，我们不在此时 mount 
   // 因为引导将根据我们是在客户端或者服务端有所不同
