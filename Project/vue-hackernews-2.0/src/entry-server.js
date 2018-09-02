@@ -64,6 +64,18 @@ export default context => {
       // 当组件通过路由都匹配完成的时候，执行获取数据的钩子函数
       // 一个预取钩子(preFetch hook) dispatches a store action 然后返回一个 Promise
       // 当所有 action 完成，store state 被更新之后，Promise resolve
+
+      // Promise.all(matchedComponents.map(function({asyncData}){
+      //   return asyncData && asyncData({
+      //     store,
+      //     route: router.currentRoute
+      //   })
+      // })).then(function(){
+      //   isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
+      //   context.state = store.state
+      //   resolve(app)
+      // })
+
       Promise.all(matchedComponents.map(({
         asyncData
       }) => asyncData && asyncData({
@@ -71,7 +83,7 @@ export default context => {
         route: router.currentRoute
       }))).then(() => {
         isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
-        
+
         // 在所有预取钩子(preFetch hook) resolve 后，
         // 我们的 store 现在已经填充入渲染应用程序所需的状态。
         // 当我们将状态附加到上下文，
