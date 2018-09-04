@@ -37,7 +37,8 @@ function createRenderer (bundle, options) {
       max: 1000,
       maxAge: 1000 * 60 * 15
     }),
-    // this is only needed when vue-server-renderer is npm-linked
+    // 只有在所生成的 bundle 文件与外部的 NPM 依赖模块放置在不同位置
+    // 或者 vue-server-renderer 是通过 NPM link 链接到当前项目中时，才需要配置此选项。
     basedir: resolve('./dist'),
     // recommended for performance
     runInNewContext: false
