@@ -5,7 +5,8 @@ const path = require('path')
 const MFS = require('memory-fs')
 const webpack = require('webpack')
 
-// 像 webpack / grunt /gulp 等工具都提供watch模式，当磁盘文件变化后自动重新运行打包。今天我们要学习的chokidar就是一款专门用于文件监控的库
+// 像 webpack / grunt /gulp 等工具都提供 watch 模式，当磁盘文件变化后自动重新运行打包
+// chokidar 就是一款专门用于文件监控的库
 const chokidar = require('chokidar')
 const clientConfig = require('./webpack.client.config')
 const serverConfig = require('./webpack.server.config')

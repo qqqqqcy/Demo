@@ -28,11 +28,11 @@ const config = merge(base, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
-        // a module is extracted into the vendor chunk if...
+        // 一个模块被提取到 vendor chunk 时……
         return (
-          // it's inside node_modules
+          // 如果它在 node_modules 中
           /node_modules/.test(module.context) &&
-          // and not a CSS file (due to extract-text-webpack-plugin limitation)
+          // 如果 request 是一个 CSS 文件，则无需外置化提取
           !/\.css$/.test(module.request)
         )
       }
@@ -40,6 +40,7 @@ const config = merge(base, {
     // extract webpack runtime & manifest to avoid vendor chunk hash changing
     // on every build.
     // 打包分割优化（目录文件）
+    // 提取 webpack 运行时和 manifest
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
     }),

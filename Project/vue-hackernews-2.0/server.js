@@ -1,34 +1,52 @@
+// http://nodejs.cn/api/fs.html
+// fs - 文件系统
 const fs = require('fs')
+
+// http://nodejs.cn/api/path.html
+// path - 路径
 const path = require('path')
 
-// 对于部分网页进行服务端的缓存，可以获得更好的渲染性能
+// https://segmentfault.com/a/1190000012939607
+// lru-cache 用于在内存中管理缓存数据，并且支持LRU算法。可以让程序不依赖任何外部数据库实现缓存管理。
 const LRU = require('lru-cache')
+
+// http://www.expressjs.com.cn/
 const express = require('express')
 
-// 用于请求网页的logo
+// https://www.npmjs.com/package/serve-favicon
+// 用于请求网页的 logo
 const favicon = require('serve-favicon')
 
+// https://www.npmjs.com/package/compression
 //  对发给客户端的大响应提供Gzip压缩支持
 const compression = require('compression')
 
+// https://www.npmjs.com/package/route-cache
 // 缓存 express 路由数据。某些路由数据计算过程耗时比较长，数据实时性要求低，此时可以缓存计算的结果
 const microcache = require('route-cache')
+
+// 获取绝对路径
 const resolve = file => path.resolve(__dirname, file)
 
 // 使用（可选的）选项创建一个 Renderer 实例 https://ssr.vuejs.org/zh/api/#createrenderer
-const { createBundleRenderer } = require('vue-server-renderer')
+const {
+  createBundleRenderer
+} = require('vue-server-renderer')
 
+// 判断是否生成环境
 const isProd = process.env.NODE_ENV === 'production'
 
-// ？没找到设置的地方
+// 判断是否缓存
 const useMicroCache = process.env.MICRO_CACHE !== 'false'
+
+// 服务端信息
 const serverInfo =
   `express/${require('express/package.json').version} ` +
   `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
 
 const app = express()
 
-function createRenderer (bundle, options) {
+function createRenderer(bundle, options) {
   // https://ssr.vuejs.org/zh/guide/bundle-renderer.html#%E4%BD%BF%E7%94%A8%E5%9F%BA%E6%9C%AC-ssr-%E7%9A%84%E9%97%AE%E9%A2%98
   // 使用 createBundleRenderer 可以让服务端也热更新，不用重启服务
   return createBundleRenderer(bundle, Object.assign(options, {
@@ -73,11 +91,15 @@ if (isProd) {
   )
 }
 
+// express.static 是 Express 内置的唯一一个中间件
+// 是基于 serve-static 开发的，负责托管 Express 应用内的静态资源
 const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
-app.use(compression({ threshold: 0 }))
+app.use(compression({
+  threshold: 0
+}))
 app.use(favicon('./public/logo-48.png'))
 app.use('/dist', serve('./dist', true))
 app.use('/public', serve('./public', true))
@@ -89,10 +111,13 @@ app.use('/service-worker.js', serve('./dist/service-worker.js'))
 // logic to determine whether a request is cacheable based on its url and
 // headers.
 // 1-second microcache.
+// 因为这个 app 没有用户特定内容，每一个页面都可以被缓存
+// 如果 app 涉及到用户特定的内容，必须根据页面地址和头文件来确定是否缓存页面
+// 1s 缓存
 // https://www.nginx.com/blog/benefits-of-microcaching-nginx/
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
-function render (req, res) {
+function render(req, res) {
   const s = Date.now()
 
   res.setHeader("Content-Type", "text/html")
@@ -101,7 +126,7 @@ function render (req, res) {
   const handleError = err => {
     if (err.url) {
       res.redirect(err.url)
-    } else if(err.code === 404) {
+    } else if (err.code === 404) {
       res.status(404).send('404 | Page Not Found')
     } else {
       // Render Error Page or Redirect
