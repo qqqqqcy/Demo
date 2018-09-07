@@ -1,0 +1,21 @@
+{
+    "common": {
+        "resultCode": "1",
+        "resultMsg": "成功"
+    },
+    "data": {
+        "articleList": [{
+            "title": "article 1",
+            "articleId":"1",
+            "fragment": "hello world! haha haha my name is quincy"
+        }, {
+            "title": "article 2",
+            "articleId":"2",
+            "fragment": "article 2 hello world! haha haha my name is quincy"
+        }, {
+            "title": "article 3",
+            "articleId":"3",
+            "fragment": "article 3 hello world! haha haha my name is quincy"
+        }]
+    }
+}
