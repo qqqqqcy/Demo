@@ -14,16 +14,29 @@ export default new Router({
                 import(/* webpackChunkName: "homePage" */ './views/homePage/homePage.vue')
         },
         {
+            path: '/homePage',
+            redirect: '/'
+        },
+        {
             path: '/article/:articleId',
             name: 'article',
             component: () =>
                 import(/* webpackChunkName: "article" */ './views/article/article.vue')
         },
         {
-            path: '/newArticle',
+            path: '/newArticle/:articleId?',
             name: 'newArticle',
+            meta: {
+                needLogin: true
+            },
             component: () =>
                 import(/* webpackChunkName: "article" */ './views/article/newArticle.vue')
+        },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: () =>
+                import(/* webpackChunkName: "admin" */ './views/admin/admin.vue')
         }
     ]
 })

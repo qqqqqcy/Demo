@@ -110,34 +110,28 @@ const raplaceStrBody = (str) => {
     return strBody
 }
 
-const afterHandle = (body, header) => {
+const afterHandle = (body) => {
     let bodyStr = JSON.stringify(dealElement(body))
     bodyStr = raplaceStrBody(bodyStr)
 
-    const jsonData = {
-        head: {
-            ...header
-        },
-        body: JSON.parse(bodyStr)
-    }
-    return jsonData
+    return JSON.parse(bodyStr)
 }
 
-async function axoisHttp({ body, head, config }) {
+async function axoisHttp({ body, config }) {
     const { url, method, responseType } = config
     const promise = await axios({
         url,
         method,
         responseType,
-        data: afterHandle(body, head, config)
+        data: afterHandle(body, config)
     })
     return promise
 }
 
 export default function fetch(config) {
-    return (body, head = {}) => {
+    return (body) => {
         let result
-        result = axoisHttp({ body, head, config })
+        result = axoisHttp({ body, config })
         return result
     }
 }

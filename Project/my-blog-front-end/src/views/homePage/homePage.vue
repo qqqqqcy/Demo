@@ -1,5 +1,6 @@
 <template>
     <div class="HomePage">
+      <router-link v-if="$store.getters.loginStatus" to="/newArticle">创建</router-link>
         <ArticleSec v-for="(item,index) in articleList"
                  :key="index+'|ArticleSec'"
                  :item="item" />
@@ -18,6 +19,7 @@ export default {
     name: 'HomePage',
     data() {
         return {
+            loginStatus: false,
             articleList: []
         }
     },
@@ -32,7 +34,7 @@ export default {
                 console.log(data)
                 this.articleList = data.articleList
             })
-            .catch((err) => console.log(err))
+            .catch((err) => alert(err))
     }
 }
 </script>

@@ -1,12 +1,21 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">首页</router-link> |
-      <router-link to="/newArticle">创建</router-link>
+      <router-link to="/">首页</router-link> 
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {}
+    },
+    created() {}
+}
+</script>
+
 
 <style lang="less">
 #app {

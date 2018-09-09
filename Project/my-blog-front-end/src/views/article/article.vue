@@ -1,6 +1,11 @@
 <template>
     <div class="article">
-        <ArticleSec :item="article"/>
+      <router-link v-if="$store.getters.loginStatus"
+                   :to="{
+                       name:'newArticle', 
+                       params:{'articleId':article.articleId}
+                    }">编辑</router-link>
+      <ArticleSec :item="article"/>
     </div>
 </template>
 
@@ -11,7 +16,8 @@ import ArticleSec from '@/components/ArticleSec'
 export default {
     data() {
         return {
-            article: {}
+            article: {},
+            loginStatus: false
         }
     },
     components: {
