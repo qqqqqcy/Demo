@@ -2,20 +2,19 @@ const path = require('path')
 const express = require('express')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
-const flash = require('connect-flash')
+const bodyParser = require('body-parser')
 const config = require('config-lite')(__dirname)
 const routes = require('./routes')
 const pkg = require('./package')
 
+
 const app = express()
 
-// 设置模板目录
-app.set('views', path.join(__dirname, 'views'))
-// 设置模板引擎为 ejs
-app.set('view engine', 'ejs')
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 // 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'public')))
+
 // session 中间件
 app.use(session({
   name: config.session.key, // 设置 cookie 中保存 session id 的字段名称
@@ -29,9 +28,11 @@ app.use(session({
     url: config.mongodb// mongodb 地址
   })
 }))
-// flash 中间件，用来显示通知
-app.use(flash())
 
+
+// app.use(function(req,res,next){
+//   next()
+// })
 // 路由
 routes(app)
 
