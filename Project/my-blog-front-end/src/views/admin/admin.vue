@@ -19,12 +19,15 @@
             <button @click="API_POST_LOGIN">
                 登录
             </button>
+            <button @click="API_POST_LOGOUT">
+                登出
+            </button>
         </div>
     </div>
 </template>
 
 <script>
-import { API_POST_LOGIN } from '@/api'
+import { API_POST_LOGIN, API_POST_LOGOUT } from '@/api'
 // import userSec from '@/components/userSec'
 
 export default {
@@ -50,6 +53,15 @@ export default {
                     sessionStorage.setItem('loginStatus', 'T')
                     this.$store.commit('login')
                     this.$router.push('homePage')
+                })
+                .catch((err) => alert(err))
+        },
+        API_POST_LOGOUT() {
+            API_POST_LOGOUT(this.user)
+                .then(() => {
+                    alert('登出成功')
+                    sessionStorage.setItem('loginStatus', 'F')
+                    this.$store.commit('logout')
                 })
                 .catch((err) => alert(err))
         }

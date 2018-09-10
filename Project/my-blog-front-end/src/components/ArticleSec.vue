@@ -2,7 +2,7 @@
     <div class="articleSec"
          @click="$router.push({
              name:'article',
-             params:{'articleId':item.articleId}
+             params:{'articleId':item._id}
         })">
         <!-- <button class="articleSec__editBtn">编辑文章</button> -->
         <h1>{{item.title}}</h1>
