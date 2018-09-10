@@ -23,10 +23,10 @@ router.post('/', checkNotLogin, function (req, res, next) {
     }
     let user = findUser(data.account, data.password)
     if (user) {
-      // 客户端 第一次链接到服务器 服务器会自动给他分配一个 session.id
+      // 客户端第一次链接到服务器,服务器会自动给他分配一个 session.id
       // 可以调用 req.session.id 获取得到这个值
       // 如果服务器调用 req.session.regenerate
-      // 会给客户端 产生一个新的 session.id 取代自动生成的那个
+      // 会给客户端产生一个新的 session.id 取代自动生成的那个
       req.session.regenerate(function (err) {
         if (err) {
           throw new Error('登录失败')
