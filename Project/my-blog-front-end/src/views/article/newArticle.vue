@@ -1,14 +1,14 @@
 <template>
     <div class="newArticle">
         <div>
-            <label for="title">标题</label>
+            <p>标题</p>
             <input class="newArticle__title"
                    type="text"
                    name="title"
                    v-model="article.title">
         </div>
         <div>
-            <label for="content">标题</label>
+            <p>内容</p>
 
             <textarea class="newArticle__content"
                       name="content"
@@ -18,13 +18,21 @@
             <button @click="saveArticle">
                 保存
             </button>
+            <button v-if="this.article.articleId"
+                    @click="deleteArticle">
+                删除
+            </button>
         </div>
     </div>
 </template>
 
 <script>
-import { API_POST_ARTICLE, API_GET_ARTICLE, API_PUT_ARTICLE } from '@/api'
-// import ArticleSec from '@/components/ArticleSec'
+import {
+    API_POST_ARTICLE,
+    API_GET_ARTICLE,
+    API_PUT_ARTICLE,
+    API_DELETE_ARTICLE
+} from '@/api'
 
 export default {
     data() {
@@ -42,9 +50,6 @@ export default {
         if (this.article.articleId) {
             this.API_GET_ARTICLE()
         }
-        // API_GET_ARTICLE({ newArticleId: this.$route.params.newArticleId }).then((data) => {
-        //     this.newArticle = data
-        // })
     },
     methods: {
         saveArticle() {
@@ -54,10 +59,20 @@ export default {
                 this.API_POST_ARTICLE()
             }
         },
+        deleteArticle() {
+            API_DELETE_ARTICLE(this.article)
+                .then(() => {
+                    alert('删除成功！')
+                    this.$router.push({
+                        name: 'homePage'
+                    })
+                })
+                .catch((err) => console.log(err))
+        },
 
         // 修改
         API_PUT_ARTICLE() {
-            API_PUT_ARTICLE({ articleId: this.article.articleId })
+            API_PUT_ARTICLE(this.article)
                 .then((data) => {
                     alert('更改成功！')
                     this.$router.push({
@@ -71,6 +86,7 @@ export default {
         API_GET_ARTICLE() {
             API_GET_ARTICLE({ articleId: this.article.articleId })
                 .then((data) => {
+                    data.articleId = data._id
                     this.article = data
                 })
                 .catch((err) => console.log(err))

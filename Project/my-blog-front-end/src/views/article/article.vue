@@ -3,7 +3,7 @@
       <router-link v-if="$store.getters.loginStatus"
                    :to="{
                        name:'newArticle', 
-                       params:{'articleId':article.articleId}
+                       params:{'articleId':article._id}
                     }">编辑</router-link>
       <ArticleSec :item="article"/>
     </div>

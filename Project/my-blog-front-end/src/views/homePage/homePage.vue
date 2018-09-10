@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { API_GET_ARTICLES } from '@/api'
+import { API_GET_ARTICLE } from '@/api'
 import ArticleSec from '@/components/ArticleSec'
 
 export default {
@@ -27,7 +27,7 @@ export default {
         ArticleSec
     },
     created() {
-        API_GET_ARTICLES({
+        API_GET_ARTICLE({
             index: 1
         })
             .then((data) => {

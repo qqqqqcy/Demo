@@ -4,8 +4,8 @@ module.exports = function (app) {
   })
   app.use('/login', require('./login'))
   // app.use('/signup', require('./signup'))
-  // app.use('/signout', require('./signout'))
-  // app.use('/posts', require('./posts'))
+  app.use('/logout', require('./logout'))
+  app.use('/article', require('./article'))
   // app.use('/comments', require('./comments'))
   // 404 page
   app.use(function (req, res) {
