@@ -1,8 +1,10 @@
+import { createApp } from './app'
 import Vue from 'vue'
-import App from './App.vue'
 import router from './router'
-import store from './store/index'
+import store from './store'
 import axios from 'axios'
+
+const { app } = createApp
 
 Vue.config.productionTip = false
 Vue.prototype.$_axios = axios
@@ -25,8 +27,4 @@ router.beforeEach((to, from, next) => {
     next()
 })
 
-new Vue({
-    router,
-    store,
-    render: (h) => h(App)
-}).$mount('#app')
+app.$mount('#app')

@@ -5,7 +5,7 @@ let BASE_PATH = ''
 if (process.env.NODE_ENV === 'development') {
     BASE_PATH = '/localMock'
     // 本地测试
-    // BASE_PATH = '/mock'
+    BASE_PATH = '/mock'
 }
 
 // 接口的最后一级对应 mock 文件夹中的同名文件
