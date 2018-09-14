@@ -9,9 +9,19 @@ const pkg = require('./package')
 
 
 const app = express()
-
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type,XFILENAME,XFILECATEGORY,XFILESIZE");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By", ' 3.2.1')
+  res.header("Content-Type", "application/json;charset=utf-8");
+  next();
+})
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 // 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -22,10 +32,10 @@ app.use(session({
   resave: true, // 强制更新 session
   saveUninitialized: false, // 设置为 false，强制创建一个 session，即使用户未登录
   cookie: {
-    maxAge: config.session.maxAge// 过期时间，过期后 cookie 中的 session id 自动删除
+    maxAge: config.session.maxAge // 过期时间，过期后 cookie 中的 session id 自动删除
   },
-  store: new MongoStore({// 将 session 存储到 mongodb
-    url: config.mongodb// mongodb 地址
+  store: new MongoStore({ // 将 session 存储到 mongodb
+    url: config.mongodb // mongodb 地址
   })
 }))
 
