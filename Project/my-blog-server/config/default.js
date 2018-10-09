@@ -7,7 +7,7 @@ module.exports = {
   },
   users: {
     items: [{
-      name: 'admin',
+      account: 'admin',
       password: '123456'
     }]
   },

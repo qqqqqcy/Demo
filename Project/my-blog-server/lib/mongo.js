@@ -7,9 +7,11 @@ mongoose.connect(config.mongodb, {
 
 const articleSchema = new mongoose.Schema({
 	title: String,
+	tag: String,
+	sec: String,
 	content: String,
-	createDate: Date,
-	updateDate: Date,
+	createTime: Date,
+	updateTime: Date,
 })
 // const userSchema = new mongoose.Schema({
 // 	name: String,

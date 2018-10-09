@@ -8,13 +8,13 @@ const checkArticleContent = require('../middlewares/check').checkArticleContent
 
 // GET 获取文章
 router.get('/', function (req, res, next) {
-  if (req.query.articleId) {
+  if (req.query._id) {
     // 指定文章
-    ArticleModel.query(req.query.articleId).then(data =>
+    ArticleModel.query(req.query._id).then(data =>
       res.json(response(data))
     ).catch(err => res.json(response(err)))
   } else {
-    // 所以文章
+    // 所有文章
     ArticleModel.queryAll().then(data =>
       res.json(response({
         articleList: data
@@ -28,14 +28,16 @@ router.post('/', checkLogin, checkArticleContent, function (req, res, next) {
 
   const article = {
     title: req.body.title,
+    tag: req.body.tag,
     content: req.body.content,
-    createDate: new Date(),
-    updateDate: new Date()
+    sec: req.body.sec,
+    createTime: new Date(),
+    updateTime: new Date()
   }
 
   ArticleModel.create(article).then((data) => {
     res.json(response({
-      articleId: data._id
+      _id: data._id
     }))
   }).catch(err => res.json(response(err)))
 })
@@ -44,18 +46,20 @@ router.post('/', checkLogin, checkArticleContent, function (req, res, next) {
 router.put('/', checkLogin, checkArticleContent, function (req, res, next) {
   const article = {
     title: req.body.title,
+    tag: req.body.tag,
     content: req.body.content,
-    updateDate: new Date()
+    sec: req.body.sec,
+    updateTime: new Date()
   }
 
-  ArticleModel.query(req.body.articleId)
+  ArticleModel.query(req.body._id)
     .then((data) => {
       Object.assign(data, article)
       return ArticleModel.update(data)
     })
     .then((data) => {
       res.json(response({
-        articleId: data._id
+        _id: data._id
       }))
     })
     .catch(
@@ -65,7 +69,7 @@ router.put('/', checkLogin, checkArticleContent, function (req, res, next) {
 
 // DELETE 删除文章
 router.delete('/', checkLogin, function (req, res, next) {
-  ArticleModel.delete(req.body.articleId)
+  ArticleModel.delete(req.body._id)
     .then((data) => {
       res.json(response())
     })
@@ -75,19 +79,19 @@ router.delete('/', checkLogin, function (req, res, next) {
 })
 
 
-// GET /posts/:postId/edit 更新文章页
-router.get('/:postId/edit', checkLogin, function (req, res, next) {
-  res.send('更新文章页')
-})
+// // GET /posts/:postId/edit 更新文章页
+// router.get('/:postId/edit', checkLogin, function (req, res, next) {
+//   res.send('更新文章页')
+// })
 
-// POST /posts/:postId/edit 更新一篇文章
-router.post('/:postId/edit', checkLogin, function (req, res, next) {
-  res.send('更新文章')
-})
+// // POST /posts/:postId/edit 更新一篇文章
+// router.post('/:postId/edit', checkLogin, function (req, res, next) {
+//   res.send('更新文章')
+// })
 
-// GET /posts/:postId/remove 删除一篇文章
-router.get('/:postId/remove', checkLogin, function (req, res, next) {
-  res.send('删除文章')
-})
+// // GET /posts/:postId/remove 删除一篇文章
+// router.get('/:postId/remove', checkLogin, function (req, res, next) {
+//   res.send('删除文章')
+// })
 
 module.exports = router
